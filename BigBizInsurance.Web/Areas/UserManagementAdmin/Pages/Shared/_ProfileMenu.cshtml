@@ -1,0 +1,71 @@
+﻿@using _Layout = BigBizInsurance.Web.Localization._Layout._Layout
+@using UsersResources = UserManagement.Localization.Users.UsersResources
+@inject UserManager<UserManagement.Domain.Models.ApplicationUser> UserManager
+@inject SignInManager<UserManagement.Domain.Models.ApplicationUser> SigninUser
+@{
+    var currentUserId = UserManager.GetUserId(User);
+}
+
+@if (SigninUser.IsSignedIn(User))
+{
+    <li class="dropdown user-menu">
+        <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <img src="@Url.Page("/Index", "LoadUserImage", new { area = "", userName = User.Identity.Name })" class="user-image" alt="...">
+            <span class="d-none d-lg-inline-block"> @User.Identity.Name</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+            <!-- User image -->
+            <li class="dropdown-header">
+                <img src="@Url.Page("/Index", "LoadUserImage", new { area = "", userName = User.Identity.Name })"  class="img-circle" alt="...">
+
+                <div class="d-inline-block">
+                    @User.Identity.Name <small class="pt-1"></small>
+                </div>
+            </li>
+            <li>
+                <a asp-page="@UserManagementNavConstants.Pages.UserDisplay" asp-route-userId="@currentUserId" asp-area="@UserManagementNavConstants.Area">
+                    <i class="mdi mdi-account"></i>@_Layout.Profile
+                </a>
+            </li>
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel("Identity", "/Account/Manage/Index",null, _Layout.ChangePhone, " <i class='mdi mdi-phone'></i>","<li>"," </li>", cssClass: "dropdown-item"))" />
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel("Identity", "/Account/Manage/Email",null, _Layout.ChangeEmail, " <i class='mdi mdi-email'></i>", "<li>"," </li>",cssClass: "dropdown-item"))" />
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel("Identity", "/Account/Manage/ChangePassword",null, _Layout.ChangePassword, " <i class='mdi mdi-textbox-password'></i>","<li>"," </li>", cssClass: "dropdown-item"))" />
+
+           
+            <li class="dropdown-footer">
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })"></form>
+                <a href="javascript:document.getElementById('logoutForm').submit()">
+                    <i class="mdi mdi-logout"></i>
+                    @UsersResources.LogOut
+                </a>
+
+            </li>
+        </ul>
+    </li>
+
+}
+else
+{
+    <li class="dropdown user-menu">
+        <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <span class="d-none d-lg-inline-block">  @UsersResources.LoginRegister</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+
+            <li>
+                <a asp-area="Identity" asp-page="/Account/Login">
+                    <i class="mdi mdi-account"></i>@UsersResources.Login
+                </a>
+
+            </li>
+            <li>
+                <a asp-area="Identity" asp-page="/Account/Register">
+                    <i class="mdi mdi-account"></i>@UsersResources.Register
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+
+}

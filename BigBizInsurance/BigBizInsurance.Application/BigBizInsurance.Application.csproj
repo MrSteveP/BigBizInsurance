@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="OnlineSchoolNavConstants.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AuditTrail\AuditTrailComponent.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Application\Common.Application.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Localization\Common.Localization.csproj" />
+    <ProjectReference Include="..\BigBizInsurance.Domain\BigBizInsurance.Domain.csproj" />
+    <ProjectReference Include="..\BigBizInsurance.Localization\BigBizInsurance.Localization.csproj" />
+  </ItemGroup>
+
+</Project>

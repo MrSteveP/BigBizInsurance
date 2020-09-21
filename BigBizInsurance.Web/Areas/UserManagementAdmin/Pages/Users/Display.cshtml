@@ -1,0 +1,174 @@
+﻿@page "/Users/Display/{userId?}"
+@using UsersManagementResources = UserManagement.Localization.UsersManagement.UsersManagement;
+@using SharedResources = Common.Localization.Shared.Shared;
+@using UserManagement.Domain.Models
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Users.DisplayModel
+@{
+     
+}
+
+@section Styles{
+
+    <!--dropify-->
+    <link href="~/TemplateManagement/vendors/dropify/dist/css/dropify.css" rel="stylesheet" />
+}
+
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2></h2>
+            </div>
+            <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <img src="@Url.Page("/Index", "LoadUserImage", new { area = "",userName=Model.Input.UserName })" alt="..." style="width:200px">
+
+                        </div>
+                      
+                    </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@UsersManagementResources.Display_FormTitle</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormFirstName</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.FirstName</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormMiddleName</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.MiddleName</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormLastName</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.LastName</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormBirthDate</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.BirthDateString</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormPhone</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.PhoneNumber</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormGender</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <p>
+                                @UsersManagementResources.FormMale :
+                                @Html.RadioButtonFor(m => m.Input.GenderId, (int)Enumerations.GenderEnum.Male, new { @class = "flat", disabled = "disabled" })
+                                @UsersManagementResources.FormFemale :
+                                @Html.RadioButtonFor(m => m.Input.GenderId, (int)Enumerations.GenderEnum.Female, new { @class = "flat", disabled = "disabled" })
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormEmail</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.Email</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormUserName</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.UserName</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormAddress</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.Address</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>   @SharedResources.Activate</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" asp-for="Input.Active" class="js-switch" disabled="disabled" />  @SharedResources.Activate /  @SharedResources.Deactivate
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @UsersManagementResources.FormRoles</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            @foreach (var role in Model.Input.Roles)
+                            {
+                                <div>@role </div>
+                            }
+                        </div>
+                    </div>
+
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToList</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+
+    <!--dropify-->
+    <script src="~/TemplateManagement/vendors/dropify/dist/js/dropify.min.js"></script>
+    <script src="~/ClientApp/UserManagementAdmin/Users/app.display.js"></script>
+    <script>
+        $app.display.Init();
+    </script>
+}

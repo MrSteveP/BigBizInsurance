@@ -1,0 +1,71 @@
+﻿@using _Layout = BigBizInsurance.Web.Localization._Layout._Layout
+@using UserManagement.Application
+@using BigBizInsurance.Web.Code
+@using UserManagement.Domain.Models
+
+
+
+
+<li class="has-sub active expand">
+    <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.Dashboard,null,_Layout.Dashboard,"<i class='mdi mdi-view-dashboard-outline'></i>","","","sidenav-item-link"))" />
+</li>
+
+<li class="has-sub">
+    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#menu_roles"
+       aria-expanded="false" aria-controls="menu_roles">
+        <i class="mdi mdi-security-account"></i>
+        <span class="nav-text">@_Layout.Roles </span> <b class="caret"></b>
+    </a>
+    <ul class="collapse" id="menu_roles" data-parent="#sidebar-menu">
+        <div class="sub-menu">
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.RoleCreate,null,_Layout.NewRole,"","","","sidenav-item-link"))" />
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.RoleIndex,null,_Layout.RolesList,"","","","sidenav-item-link"))" />
+        </div>
+    </ul>
+</li>
+
+<li class="has-sub">
+    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#menu_policies"
+       aria-expanded="false" aria-controls="menu_policies">
+        <i class="mdi mdi-security-account"></i>
+        <span class="nav-text">@_Layout.Policies </span> <b class="caret"></b>
+    </a>
+    <ul class="collapse" id="menu_policies" data-parent="#sidebar-menu">
+        <div class="sub-menu">
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.PolicyCreate,null,_Layout.NewPolicy,"","","","sidenav-item-link"))" />
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.PolicyIndex,null,_Layout.PoliciesList,"","","","sidenav-item-link"))" />
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.ApplyPolicies,null,_Layout.ApplyPolicies,"","","","sidenav-item-link"))" />
+        </div>
+    </ul>
+</li>
+@if (User.IsInRole(Enumerations.RolesEnum.Admins.ToString()))
+{
+    <li class="has-sub">
+        <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#menu_users"
+           aria-expanded="false" aria-controls="menu_users">
+            <i class="mdi mdi-account"></i>
+            <span class="nav-text">@_Layout.Users </span> <b class="caret"></b>
+        </a>
+        <ul class="collapse" id="menu_users" data-parent="#sidebar-menu">
+            <div class="sub-menu">
+                <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area, UserManagementNavConstants.Pages.UserCreate, null, _Layout.NewUser, "", "", "", "sidenav-item-link"))" />
+                <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area, UserManagementNavConstants.Pages.UserIndex, null, _Layout.UsersList, "", "", "", "sidenav-item-link"))" />
+            </div>
+        </ul>
+    </li>
+}
+
+<li class="has-sub">
+    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#menu_settings"
+       aria-expanded="false" aria-controls="menu_settings">
+        <i class="mdi mdi-settings-outline"></i>
+        <span class="nav-text">@_Layout.Settings </span> <b class="caret"></b>
+    </a>
+    <ul class="collapse" id="menu_settings" data-parent="#sidebar-menu">
+        <div class="sub-menu">
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.SettingsAuthentication,null,_Layout.Authentication,"","","", "sidenav-item-link"))" />
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.SettingsSmpt,null,_Layout.Smpt,"","","", "sidenav-item-link"))" />
+        </div>
+    </ul>
+</li>
+

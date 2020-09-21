@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AuditTrail\AuditTrailComponent.csproj" />
+    <ProjectReference Include="..\..\CrossCutting\CrossCutting.csproj" />
+    <ProjectReference Include="..\BigBizInsurance.Application\BigBizInsurance.Application.csproj" />
+  </ItemGroup>
+
+</Project>

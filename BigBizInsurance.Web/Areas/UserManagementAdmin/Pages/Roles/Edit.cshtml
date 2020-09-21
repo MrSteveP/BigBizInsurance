@@ -1,0 +1,49 @@
+﻿@page "/Roles/Edit/{roleId?}"
+@using RolesManagementResources = UserManagement.Localization.RolesManagement.RolesManagement
+@using SharedResources = Common.Localization.Shared.Shared
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Roles.EditModel
+@{
+     
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@RolesManagementResources.Edit_FormTitle</h2>
+            </div>
+            <div class="card-body">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form method="post">
+                    <input type="hidden" asp-for="Input.Id" />
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @RolesManagementResources.FormRoleName<span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+
+                            <input type="text" asp-for="Input.Name" class="form-control ">
+                            <span asp-validation-for="Input.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button type="submit" asp-page-handler="Submit" class="btn btn-success">@SharedResources.Save</button>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToList</button>
+
+                    &nbsp;
+                    <button type="submit" asp-page-handler="Remove" asp-route-id="@Model.Input.Id" onclick="return confirm('@SharedResources.DeleteConfirm');" formnovalidate="formnovalidate" class="btn btn-danger">@SharedResources.Delete</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

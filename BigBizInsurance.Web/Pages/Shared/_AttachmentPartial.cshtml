@@ -1,0 +1,11 @@
+﻿@using SharedResources = Common.Localization.Shared.Shared
+@model AttachmentPartialViewModel
+
+    <div>
+        <input class="upload_video" type="file" name="@Model.InputName" />
+        <input type="hidden" value="@Model.AllowedFilesExtension" class="hdnf_allowedExtensions"/>
+        <br />
+        <small>@(string.Format(SharedResources.AllowedFileExtensionsFormat,Model.AllowedFilesExtension)) </small>
+        <br />
+        <span class="text-danger spn_uploadError"></span>
+    </div>

@@ -1,0 +1,33 @@
+﻿@using _Layout = BigBizInsurance.Web.Localization._Layout._Layout
+@using BigBizInsurance.Application
+@using BigBizInsurance.Web.Code
+@using BigBizInsurance.Domain.Models
+@using UserManagement.Domain.Models
+@{
+}
+<!-- sidebar menu -->
+
+
+<li class="has-sub active expand">
+    <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(NavConstants.ManagementAreas.Area,NavConstants.ManagementAreas.Pages.Index,null,_Layout.Dashboard,"<i class='mdi mdi-view-dashboard-outline'></i>","","","sidenav-item-link"))" />
+</li>
+
+<li class="has-sub">
+    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#menu_samples"
+       aria-expanded="false" aria-controls="menu_samples">
+        <i class="mdi mdi-folder-multiple-outline"></i>
+        <span class="nav-text">@_Layout.Samples </span> <b class="caret"></b>
+    </a>
+    <ul class="collapse" id="menu_samples" data-parent="#sidebar-menu">
+        <div class="sub-menu">
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(NavConstants.ManagementAreas.Area,NavConstants.ManagementAreas.Pages.SamplesCreate,null,_Layout.NewSample,"","","","sidenav-item-link"))" />
+            <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(NavConstants.ManagementAreas.Area,NavConstants.ManagementAreas.Pages.SamplesIndex,null,_Layout.SamplesList,"","","","sidenav-item-link"))" />
+        </div>
+    </ul>
+</li>
+
+<li class="has-sub active expand">
+    <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(NavConstants.ManagementAreas.Area,NavConstants.ManagementAreas.Pages.AuditIndex,null,_Layout.Audit,"<i class='mdi mdi-file-find'></i>","<li>","</i>"))" />
+</li>
+
+

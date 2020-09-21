@@ -1,0 +1,67 @@
+﻿@page
+@using UsersResources = UserManagement.Localization.Users.UsersResources
+@using _Layout = BigBizInsurance.Web.Localization._Layout._Layout
+
+@model LoginModel
+
+@{
+    ViewData["Title"] = UsersResources.Login;
+    Layout = "_LayoutIdentity";
+}
+
+
+<h4 class="text-dark mb-5">@UsersResources.Login</h4>
+<form id="account" method="post">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row">
+        <div class="form-group col-md-12 mb-4">
+
+            <input asp-for="Input.UserName" placeholder="@(UsersResources.UserName)" class="form-control input-lg" />
+            <span asp-validation-for="Input.UserName" class="text-danger"></span>
+
+
+        </div>
+        <div class="form-group col-md-12 ">
+
+            <input asp-for="Input.Password" placeholder="@(UsersResources.Password)" class="form-control input-lg" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="col-md-12">
+            <div class="d-flex my-2 justify-content-between">
+                @if (Model.AllowRememberMe)
+                {
+                    <div class="d-inline-block mr-3">
+
+                        <label class="control control-checkbox">
+                           @UsersResources.RememberMe
+                            <input asp-for="Input.RememberMe" />
+                            <div class="control-indicator"></div>
+                        </label>
+                    </div>
+                }
+                @if (Model.AllowForgotPassword)
+                {
+                    <p>
+
+                        <a class="text-blue" asp-page="./ForgotPassword">
+                            @UsersResources.ForgetPassword
+                        </a>
+                    </p>
+                }
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">@UsersResources.Login </button>
+            <p>
+                @*Don't have an account yet ?*@
+
+                <a class="text-blue" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
+                    <span>@UsersResources.RegisterNewUser</span>
+                </a>
+
+            </p>
+        </div>
+    </div>
+</form>
+
+@section Scripts{<partial name="_ValidationScriptsPartial" /> }

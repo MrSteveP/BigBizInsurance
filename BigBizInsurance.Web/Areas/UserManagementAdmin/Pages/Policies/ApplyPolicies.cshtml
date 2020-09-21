@@ -1,0 +1,141 @@
+﻿@page
+@using PoliciesManagementResources = UserManagement.Localization.PoliciesManagement.PoliciesManagement
+@using SharedResources = Common.Localization.Shared.Shared
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Policies.ApplyPoliciesModel
+@{
+     
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@PoliciesManagementResources.ApplyPolicy_Title </h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-row">
+                        <div class="col-md-12 col-sm-12 ">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width:170px">@PoliciesManagementResources.ApplyPolicy_Policy</th>
+                                        <th style="width:100px">@PoliciesManagementResources.ApplyPolicy_Area</th>
+                                        <th style="width:100px">@PoliciesManagementResources.ApplyPolicy_Folder</th>
+                                        <th>@PoliciesManagementResources.ApplyPolicy_Path</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_pagesTableBody">
+                                    @foreach (var sitePage in Model.Input)
+                                    {
+                                        <tr>
+                                            <td>@Html.DropDownList($"Input[{Model.Input.IndexOf(sitePage)}].PolicyName", Model.PoliciesItems, new { @class = "form-control" })</td>
+                                            <td>
+                                                @sitePage.AreaName
+                                                <input type="hidden" name="@($"Input[{Model.Input.IndexOf(sitePage)}].AreaName")" value="@sitePage.AreaName" />
+                                                <input type="hidden" name="@($"Input[{Model.Input.IndexOf(sitePage)}].FolderName")" value="@sitePage.FolderName" />
+                                                <input type="hidden" name="@($"Input[{Model.Input.IndexOf(sitePage)}].Path")" value="@sitePage.Path" />
+                                                <input type="hidden" name="@($"Input[{Model.Input.IndexOf(sitePage)}].PolicyName")" class="PolicyName" value="@sitePage.PolicyName" />
+
+                                            </td>
+
+                                            <td>@sitePage.FolderName</td>
+                                            <td>@sitePage.Path</td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <button type="submit" asp-page-handler="Submit" class="btn btn-success">@SharedResources.Save</button>
+                    <button class="btn btn-primary" type="reset">@SharedResources.Reset</button>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToList</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>@PoliciesManagementResources.ApplyPolicy_Title <small> </small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <form id="demo-form2" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                        <div class="item form-group">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width:170px">@PoliciesManagementResources.ApplyPolicy_Policy</th>
+                                        <th style="width:100px">@PoliciesManagementResources.ApplyPolicy_Area</th>
+                                        <th style="width:100px">@PoliciesManagementResources.ApplyPolicy_Folder</th>
+                                        <th>@PoliciesManagementResources.ApplyPolicy_Path</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_pagesTableBody">
+                                    @foreach (var sitePage in Model.Input)
+                                    {
+                                        <tr>
+                                            <td>@Html.DropDownList($"Input[{Model.Input.IndexOf(sitePage)}].PolicyName", Model.PoliciesItems, new { @class = "form-control" })</td>
+                                            <td>
+                                                @sitePage.AreaName
+                                                <input type="hidden" name="@($"Input[{Model.Input.IndexOf(sitePage)}].AreaName")" value="@sitePage.AreaName" />
+                                                <input type="hidden" name="@($"Input[{Model.Input.IndexOf(sitePage)}].FolderName")" value="@sitePage.FolderName" />
+                                                <input type="hidden" name="@($"Input[{Model.Input.IndexOf(sitePage)}].Path")" value="@sitePage.Path" />
+                                                <input type="hidden" name="@($"Input[{Model.Input.IndexOf(sitePage)}].PolicyName")" class="PolicyName" value="@sitePage.PolicyName" />
+
+                                            </td>
+
+                                            <td>@sitePage.FolderName</td>
+                                            <td>@sitePage.Path</td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button type="submit" asp-page-handler="Submit" class="btn btn-success">@SharedResources.Save</button>
+                                <button class="btn btn-primary" type="reset">@SharedResources.Reset</button>
+                                <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToList</button>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+@section Scripts{
+    <script src="~/ClientApp/UserManagementAdmin/Policies/app.applyPolicies.js"></script>
+    <script>
+
+        $app.policyIndex.Init();
+    </script>
+}

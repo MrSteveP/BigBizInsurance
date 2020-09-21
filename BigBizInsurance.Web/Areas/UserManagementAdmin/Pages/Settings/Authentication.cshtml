@@ -1,0 +1,124 @@
+﻿@page
+@using SettingsManagementResources = UserManagement.Localization.SettingsManagement.SettingsManagement
+@using SharedResources = Common.Localization.Shared.Shared
+
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Settings.AuthenticationModel
+@{
+     
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@SettingsManagementResources.General</h2>
+            </div>
+            <div class="card-body">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form method="post">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" asp-for="Input.AllowRememberMe" class="js-switch" /> @SettingsManagementResources.AllowRememberMe
+                                </label>
+                                <div><small>@SettingsManagementResources.AllowRememberMeDesc</small></div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" asp-for="Input.AllowForgotPassword" class="js-switch" /> @SettingsManagementResources.AllowForgotPassword
+                                </label>
+                                <div><small>@SettingsManagementResources.AllowForgotPasswordDesc</small></div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" asp-for="Input.RequireConfirmedAccount" class="js-switch" /> @SettingsManagementResources.RequireConfirmedAccount
+                                </label>
+                                <div><small>@SettingsManagementResources.RequireConfirmedAccountDesc</small></div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToHomePage</button>
+                    <button type="submit" asp-page-handler="SaveAuthenticationGeneral" class="btn btn-success">@SharedResources.Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2> @SettingsManagementResources.AuthenticationThrottle</h2>
+            </div>
+            <div class="card-body">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form method="post">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <div class="">
+                                <label>
+                                    <input id="txt_AllowThrottleAuthentication" type="checkbox" asp-for="Input.AllowThrottleAuthentication" class="js-switch" /> @SettingsManagementResources.AllowThrottleAuthentication
+                                </label>
+                                <div><small>@SettingsManagementResources.AllowThrottleAuthenticationDesc</small></div>
+                                <br />
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @SettingsManagementResources.LockoutTime <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input id="txt_LockoutTime" asp-for="Input.LockoutTime" class="form-control ">
+                            <div><small> @SettingsManagementResources.LockoutTimeDesc </small></div>
+                            <span asp-validation-for="Input.LockoutTime" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @SettingsManagementResources.MaximumNumberOfAttempts <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input id="txt_MaximumNumberOfAttempts" asp-for="Input.MaximumNumberOfAttempts" class="form-control ">
+                            <div><small>@SettingsManagementResources.MaximumNumberOfAttemptsDesc</small></div>
+                            <span asp-validation-for="Input.MaximumNumberOfAttempts" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToHomePage</button>
+                    <button type="submit" asp-page-handler="SaveAuthenticationThrottling" class="btn btn-success">@SharedResources.Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/ClientApp/UserManagementAdmin/Settings/app.authentication.js"></script>
+    <script>
+        $app.authentication.Init();
+    </script>
+}

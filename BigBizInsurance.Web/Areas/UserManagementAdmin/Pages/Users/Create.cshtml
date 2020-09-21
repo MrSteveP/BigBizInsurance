@@ -1,0 +1,234 @@
+﻿@page
+@using UsersManagementResources = UserManagement.Localization.UsersManagement.UsersManagement;
+@using SharedResources = Common.Localization.Shared.Shared;
+@using UserManagement.Domain.Models
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Users.CreateModel
+@{
+     
+}
+
+@section Styles{
+    <!-- iCheck -->
+    @*<link href="~/TemplateManagement/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />*@
+    <!--dropify-->
+    <link href="~/TemplateManagement/vendors/dropify/dist/css/dropify.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/TemplateManagement/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@UsersManagementResources.Create_FormTitle </h2>
+            </div>
+            <div class="card-body">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    <input type="hidden" asp-for="RoleName" />
+
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormImage
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="file" asp-for="Input.File" class="dropify" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormFirstName  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="text" asp-for="Input.FirstName" class="form-control">
+                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormMiddleName  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="text" asp-for="Input.MiddleName" class="form-control">
+                            <span asp-validation-for="Input.MiddleName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormLastName  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="text" asp-for="Input.LastName" class="form-control">
+                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormBirthDate  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="text" class="form-control" id="txt_birthDate" asp-for="Input.BirthDateString">
+                            <span asp-validation-for="Input.BirthDateString" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormPhone  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="text" asp-for="Input.PhoneNumber" class="form-control">
+                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormGender  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <p>
+                                @UsersManagementResources.FormMale :
+                                @Html.RadioButtonFor(m => m.Input.GenderId, (int)Enumerations.GenderEnum.Male, new { @class = "flat" })
+                                @UsersManagementResources.FormFemale :
+                                @Html.RadioButtonFor(m => m.Input.GenderId, (int)Enumerations.GenderEnum.Female, new { @class = "flat" })
+                            </p>
+                            <span asp-validation-for="Input.GenderId" class="text-danger"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormEmail  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="text" asp-for="Input.Email" class="form-control  ">
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormUserName  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="text" asp-for="Input.UserName" class="form-control">
+                            <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormPassword  <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="password" asp-for="Input.Password" class="form-control">
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormConfirmPassword  <span class="required">*</span>
+                            </label>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input type="password" asp-for="Input.ConfirmPassword" class="form-control">
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormAddress  <span class="required">*</span>
+                            </label>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <textarea asp-for="Input.Address" rows="5" class="form-control"></textarea>
+                            <span asp-validation-for="Input.Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @UsersManagementResources.FormRoles  <span class="required">*</span>
+                            </label>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            @if (string.IsNullOrEmpty(Model.RoleName))
+                            {
+                                @foreach (var role in Model.RolesList)
+                                {
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="Input.Roles" value="@role.Name" class="flat"> @role.Name
+                                        </label>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <span>@Model.RoleName</span>
+                                <input type="hidden" name="Input.Roles" value="@Model.RoleName" />
+                            }
+                        </div>
+                    </div>
+                    <button type="submit" asp-page-handler="Submit" class="btn btn-success">@(string.IsNullOrEmpty(Model.ReturnUrl)? SharedResources.Save: SharedResources.Next)</button>
+                    <button class="btn btn-primary" type="reset">@SharedResources.Reset</button>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToList</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <!--dropify-->
+    <script src="~/TemplateManagement/vendors/dropify/dist/js/dropify.min.js"></script>
+    <!-- iCheck -->
+    @*<script src="~/TemplateManagement/vendors/iCheck/icheck.min.js"></script>*@
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/TemplateManagement/vendors/moment/min/moment.min.js"></script>
+    <script src="~/TemplateManagement/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="~/ClientApp/UserManagementAdmin/Users/app.create.js"></script>
+
+    <script>
+        $app.create.Init();
+    </script>
+}

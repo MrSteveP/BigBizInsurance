@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllowForgotPassword" xml:space="preserve">
+    <value>Allow Forgot Password</value>
+  </data>
+  <data name="AllowForgotPasswordDesc" xml:space="preserve">
+    <value>Enable/Disable forgot password feature</value>
+  </data>
+  <data name="AllowRememberMe" xml:space="preserve">
+    <value>Allow Remember Me</value>
+  </data>
+  <data name="AllowRememberMeDesc" xml:space="preserve">
+    <value>Should 'Remember Me' checkbox be displayed on login form?</value>
+  </data>
+  <data name="AllowThrottleAuthentication" xml:space="preserve">
+    <value>Allow Throttle Authentication</value>
+  </data>
+  <data name="AllowThrottleAuthenticationDesc" xml:space="preserve">
+    <value>Should the system throttle authentication attempts?</value>
+  </data>
+  <data name="AuthenticationThrottle" xml:space="preserve">
+    <value>Authentication Throttle</value>
+  </data>
+  <data name="AuthenticationThrottleDesc" xml:space="preserve">
+    <value>set authentication Throttle settings</value>
+  </data>
+  <data name="Authentication_Title" xml:space="preserve">
+    <value>Authentication Settings</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="GeneralDesc" xml:space="preserve">
+    <value>set authentication general settings</value>
+  </data>
+  <data name="IsSmtpAuthenticated" xml:space="preserve">
+    <value>Is Smtp Authenticated</value>
+  </data>
+  <data name="LockoutTime" xml:space="preserve">
+    <value>Lockout Time</value>
+  </data>
+  <data name="LockoutTimeDesc" xml:space="preserve">
+    <value>Number of minutes to lock the user out for after specified maximum numbers.</value>
+  </data>
+  <data name="MaximumNumberOfAttempts" xml:space="preserve">
+    <value>Maximum Number Of Attempts</value>
+  </data>
+  <data name="MaximumNumberOfAttemptsDesc" xml:space="preserve">
+    <value>Maximum number of incorrect login attempts before lockout.</value>
+  </data>
+  <data name="RequireConfirmedAccount" xml:space="preserve">
+    <value>Require Confirmed Account</value>
+  </data>
+  <data name="RequireConfirmedAccountDesc" xml:space="preserve">
+    <value>Should user confirm his account ?</value>
+  </data>
+  <data name="SmtpEnableSSL" xml:space="preserve">
+    <value>Smtp Enable SSL</value>
+  </data>
+  <data name="SmtpPassword" xml:space="preserve">
+    <value>Smtp Password</value>
+  </data>
+  <data name="SmtpPort" xml:space="preserve">
+    <value>Smtp Port</value>
+  </data>
+  <data name="SmtpServer" xml:space="preserve">
+    <value>Smtp Server</value>
+  </data>
+  <data name="SMTPSettingDesc" xml:space="preserve">
+    <value>set smtp settings</value>
+  </data>
+  <data name="SMTPSetting_Title" xml:space="preserve">
+    <value>SMTP settings</value>
+  </data>
+  <data name="SmtpUserName" xml:space="preserve">
+    <value>Smtp UserName</value>
+  </data>
+</root>

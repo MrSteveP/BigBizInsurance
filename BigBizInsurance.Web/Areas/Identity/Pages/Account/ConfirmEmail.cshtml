@@ -1,0 +1,18 @@
+﻿@page
+@using UsersResources = UserManagement.Localization.Users.UsersResources
+
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = UsersResources.ConfirmEmail ;
+}
+
+<form>
+    <h1>@ViewData["Title"]</h1>
+    <p>
+        @Model.StatusMessage
+    </p>
+
+    <div>
+        <a id="forgot-password" asp-page="/Account/Login" asp-area="Identity" class="btn btn-default submit">@UsersResources.Login</a>
+    </div>
+</form>

@@ -1,0 +1,41 @@
+﻿@using System.Text
+@using SharedResources = Common.Localization.Shared.Shared
+@model List<WizardStepsViewModel>
+
+
+
+
+@functions {
+
+
+    string RenderSteps()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        foreach (var m in Model)
+        {
+            sb.Append($"<li>" +
+                           $"<a href='#step-{m.StepNumber}' class='{m.ClassName}'> " +
+                              $"<span class='step_no'>{m.StepNumber}</span> " +
+                              $"<span class='step_descr'> { string.Format(SharedResources.StepFormat, m.StepNumber)} " +
+                                 $"<br />" +
+                                 $"<small>{m.StepText}</small>" +
+                              $"</span>" +
+                            $"</a>" +
+                      $"</li>");
+        }
+
+        return sb.ToString();
+
+    }
+
+
+}
+
+<div class="form_wizard wizard_horizontal">
+
+    <ul class="wizard_steps">
+        @Html.Raw(RenderSteps())
+    </ul>
+
+</div>

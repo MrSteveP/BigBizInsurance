@@ -1,0 +1,36 @@
+﻿@page "/Roles/Display/{roleId?}"
+@using RolesManagementResources = UserManagement.Localization.RolesManagement.RolesManagement
+@using SharedResources = Common.Localization.Shared.Shared
+
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Roles.DisplayModel
+@{
+     
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@RolesManagementResources.Display_FormTitle</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @RolesManagementResources.FormRoleName</label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.Name</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToList</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

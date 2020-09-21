@@ -1,0 +1,75 @@
+﻿@page
+@using Common.Localization.Shared
+@using CrossCutting.Core.Globalization
+@using RolesManagementResources = UserManagement.Localization.RolesManagement.RolesManagement
+@using SharedResources = Common.Localization.Shared.Shared
+
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Roles.IndexModel
+@{
+     
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@RolesManagementResources.Index_SearchFormTitle</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_Search" method="post">
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>   @RolesManagementResources.FormRoleName</label>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input id="txt_name" type="text" name="name" class="form-control ">
+                        </div>
+                    </div>
+                    <button id="btn_Search" type="submit" class="btn btn-success">@SharedResources.Search</button>
+                    <button id="btn_Reset" type="button" class="btn btn-primary">@SharedResources.Reset</button>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToHomePage</button>
+                    <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(UserManagementNavConstants.Area,UserManagementNavConstants.Pages.RoleCreate,null,RolesManagementResources.Index_SearchFormNewRoleLink,"<i class='mdi mdi-plus-circle'></i>"))" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@RolesManagementResources.Index_ListTitle</h2>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12 col-sm-12 ">
+
+                    <div id="TableContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section JTableStaticFiles{
+    <partial name="_JTableStaticFiles" />
+}
+@section Scripts{
+    <script type="text/javascript" src="/Globalization/Resources/v1.1/UserManagement.Localization/UserManagement.Localization.RolesManagement.RolesManagement/@CultureHelper.CurrentCultureName/javascript/"></script>
+    <script src="~/ClientApp/UserManagementAdmin/Roles/app.roleIndex.js"></script>
+    <script>
+
+         var initialData = {
+                urlListAction: '@Url.Page("/Roles/Index", "Search" ,new {area= "UserManagementAdmin" })',
+                detailsBaseUrl: '@Url.Page("/Roles/Display", "" ,new {area= "UserManagementAdmin" })',
+                editBaseUrl: '@Url.Page("/Roles/Edit", "" ,new {area= "UserManagementAdmin" })'
+            };
+
+            $app.roleIndex.Init(initialData);
+    </script>
+}

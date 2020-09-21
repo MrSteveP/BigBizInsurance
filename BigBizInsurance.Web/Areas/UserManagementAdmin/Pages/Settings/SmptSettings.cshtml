@@ -1,0 +1,94 @@
+﻿@page
+@using SettingsManagementResources = UserManagement.Localization.SettingsManagement.SettingsManagement
+@using SharedResources = Common.Localization.Shared.Shared
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Settings.SmptSettingsModel
+@{
+     
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@SettingsManagementResources.SMTPSetting_Title</h2>
+            </div>
+            <div class="card-body">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form method="post">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" asp-for="Input.IsSmtpAuthenticated" class="js-switch" /> @SettingsManagementResources.IsSmtpAuthenticated
+                                </label>
+                                <br />
+                            </div>
+                            <div class="">
+                                <label>
+                                    <input type="checkbox" asp-for="Input.SmtpEnableSSL" class="js-switch" /> @SettingsManagementResources.SmtpEnableSSL
+                                </label>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @SettingsManagementResources.SmtpServer <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input asp-for="Input.SmtpServer" class="form-control ">
+                            <span asp-validation-for="Input.SmtpServer" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @SettingsManagementResources.SmtpPort <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input asp-for="Input.SmtpPort" class="form-control ">
+                            <span asp-validation-for="Input.SmtpPort" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @SettingsManagementResources.SmtpUserName <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input asp-for="Input.SmtpUserName" class="form-control ">
+                            <span asp-validation-for="Input.SmtpUserName" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @SettingsManagementResources.SmtpPassword <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input asp-for="Input.SmtpPassword" class="form-control ">
+                            <span asp-validation-for="Input.SmtpPassword" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToHomePage</button>
+                    <button type="submit" asp-page-handler="Submit" class="btn btn-success">@SharedResources.Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

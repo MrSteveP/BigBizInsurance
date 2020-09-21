@@ -1,0 +1,80 @@
+﻿@page
+@using Common.Localization.Shared
+@using BigBizInsurance.Application
+@using CrossCutting.Core.Globalization
+@using _Layout = BigBizInsurance.Web.Localization._Layout._Layout
+@using AuditResources = BigBizInsurance.Localization.AuditResources.AuditResources
+@using SharedResources = Common.Localization.Shared.Shared
+@model BigBizInsurance.Web.Areas.Management.Pages.Audits.IndexModel
+@{
+     
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@AuditResources.Index_SearchFormTitle</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_Search" method="post">
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @AuditResources.FormActionCode</label>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input id="txt_name" type="text" name="audit_ActionCode" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label> @AuditResources.FormUserName</label>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input id="txt_name" type="text" name="userName" class="form-control" />
+                        </div>
+                    </div>
+
+                    <button id="btn_Search" type="submit" class="btn btn-success">@SharedResources.Search</button>
+                    <button id="btn_Reset" type="button" class="btn btn-primary">@SharedResources.Reset</button>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToHomePage</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@AuditResources.Index_ListTitle</h2>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12 col-sm-12 ">
+
+                    <div id="TableContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section JTableStaticFiles{
+    <partial name="_JTableStaticFiles" />
+}
+@section Scripts{
+    <script type="text/javascript" src="/Globalization/Resources/v1.1/BigBizInsurance.Localization/BigBizInsurance.Localization.AuditResources.AuditResources/@CultureHelper.CurrentCultureName/javascript/"></script>
+    <script src="~/ClientApp/Management/Audits/app.auditIndex.js"></script>
+    <script>
+         var initialData = {
+             urlListAction: '@Url.Page(NavConstants.ManagementAreas.Pages.AuditIndex, "Search" ,new {area= NavConstants.ManagementAreas.Area })',
+             detailsBaseUrl: '@Url.Page(NavConstants.ManagementAreas.Pages.AuditDisplay, "" ,new {area= NavConstants.ManagementAreas.Area })',
+
+            };
+
+        $app.auditIndex.Init(initialData);
+    </script>
+}

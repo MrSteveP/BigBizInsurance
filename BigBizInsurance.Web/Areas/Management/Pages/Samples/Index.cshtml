@@ -1,0 +1,78 @@
+﻿@page
+@using Common.Localization.Shared
+@using BigBizInsurance.Application
+@using CrossCutting.Core.Globalization
+@using _Layout = BigBizInsurance.Web.Localization._Layout._Layout
+@using SampleResources = BigBizInsurance.Localization.SampleResources.SampleResources
+@using UsersManagementResources = UserManagement.Localization.UsersManagement.UsersManagement
+@using UsersResources = UserManagement.Localization.Users.UsersResources
+@using SharedResources = Common.Localization.Shared.Shared
+@using BigBizInsurance.Domain.Models
+@model BigBizInsurance.Web.Areas.Management.Teachers.IndexModel
+@{
+     
+
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@SampleResources.Index_SearchFormTitle</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_Search" method="post">
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>  @SampleResources.FormName</label>
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <input id="txt_keywork" type="text" name="keywork" class="form-control ">
+                        </div>
+                    </div>
+                    <button id="btn_Search" type="submit" class="btn btn-success">@SharedResources.Search</button>
+                    <button id="btn_Reset" type="button" class="btn btn-primary">@SharedResources.Reset</button>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToHomePage</button>
+                    <partial name="_AuthorizedLink" model="@(new AuthorizedLinkViewModel(NavConstants.ManagementAreas.Area,NavConstants.ManagementAreas.Pages.SamplesCreate,null,_Layout.NewSample,"<i class='mdi mdi-plus-circle'></i>"))" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@SampleResources.Index_ListTitle</h2>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12 col-sm-12 ">
+
+                    <div id="TableContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section JTableStaticFiles{
+    <partial name="_JTableStaticFiles" />
+}
+@section Scripts{
+    <script type="text/javascript" src="/Globalization/Resources/v1.1/BigBizInsurance.Localization/BigBizInsurance.Localization.SampleResources.SampleResources/@CultureHelper.CurrentCultureName/javascript/"></script>
+    <script src="~/ClientApp/Management/Samples/app.sampleIndex.js"></script>
+    <script>
+         var initialData = {
+                urlListAction: '@Url.Page(NavConstants.ManagementAreas.Pages.SamplesIndex, "Search" ,new {area= NavConstants.ManagementAreas.Area })',
+                detailsBaseUrl: '@Url.Page(NavConstants.ManagementAreas.Pages.SamplesDisplay, "" ,new {area= NavConstants.ManagementAreas.Area })',
+                deleteBaseUrl: '@Url.Page(NavConstants.ManagementAreas.Pages.SamplesIndex, "Delete" ,new {area= NavConstants.ManagementAreas.Area })',
+                editBaseUrl: '@Url.Page(NavConstants.ManagementAreas.Pages.SamplesEdit, new {area= NavConstants.ManagementAreas.Area })',
+            };
+
+        $app.sampleIndex.Init(initialData);
+    </script>
+}

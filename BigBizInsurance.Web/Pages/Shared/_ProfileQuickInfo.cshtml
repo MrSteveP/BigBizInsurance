@@ -1,0 +1,20 @@
+﻿@using _Layout = BigBizInsurance.Web.Localization._Layout._Layout
+@using UserManagement.Application.Extensions
+@inject SignInManager<UserManagement.Domain.Models.ApplicationUser> SigninUser
+
+@if (SigninUser.IsSignedIn(User))
+{
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="@Url.Page("/Index", "LoadUserImage", new { area = "", userName = User.Identity.Name })" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>@_Layout.Welcome</span>
+            <h2>@User.Identity.Name</h2>
+        </div>
+        <div class="profile_info">
+            <span>@_Layout.LastLoginDate</span>
+            <small style="color:white;">@(await User.Identity.GetLastLoginDate(Context))</small>
+        </div>
+    </div>
+}

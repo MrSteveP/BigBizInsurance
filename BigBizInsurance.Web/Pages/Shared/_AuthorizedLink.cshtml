@@ -1,0 +1,16 @@
+﻿@using BigBizInsurance.Web.Code
+@using UserManagement.Application.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+@model AuthorizedLinkViewModel
+
+@if (AuthorizationService.CanUserAccessPage(User, Model.Page, Model.Area))
+{
+    @Html.Raw(Model.ParentElementStart)
+    <a class="actionLink @Model.CssClass" asp-page="@Model.Page" asp-area="@Model.Area" asp-all-route-data="@Model.AllRouteData">
+        @Html.Raw(Model.HtmlIcon)
+        <span class="nav-text">@Model.LinkName</span>  
+    </a>
+    @Html.Raw(Model.ParentElementEnd)
+}

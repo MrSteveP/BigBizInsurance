@@ -1,0 +1,12 @@
+﻿@page
+@using UsersResources = UserManagement.Localization.Users.UsersResources
+
+@model LockoutModel
+@{
+    ViewData["Title"] = UsersResources.Lockout;
+}
+
+<header>
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger">@UsersResources.UserIsLocked</p>
+</header>

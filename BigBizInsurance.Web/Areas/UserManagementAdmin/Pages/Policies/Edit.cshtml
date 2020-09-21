@@ -1,0 +1,135 @@
+﻿@page "/Policies/Edit/{policyId?}"
+@using PoliciesManagementResources = UserManagement.Localization.PoliciesManagement.PoliciesManagement
+@using SharedResources = Common.Localization.Shared.Shared
+@model BigBizInsurance.Web.Areas.UserManagementAdmin.Pages.Policies.EditModel
+@{
+     
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>@PoliciesManagementResources.Edit_FormTitle </h2>
+            </div>
+            <div class="card-body">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form method="post">
+                    <input type="hidden" asp-for="Input.Id" />
+                    <input type="hidden" asp-for="Input.Name" />
+
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @PoliciesManagementResources.FormPolicyName <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            <span>@Model.Input.Name</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                            <label>
+                                @PoliciesManagementResources.FormRoles <span class="required">*</span>
+                            </label>
+
+                        </div>
+                        <div class="col-md-10 mb-3">
+                            @foreach (var role in Model.RolesList)
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="Input.SelectedRoleIds"
+                                               value="@role.Id" class="flat" @((Model.Input.Roles != null && Model.Input.Roles.Any(a => a.Id == role.Id)) ? "checked='checked'" : "")> @role.Name
+                                        </label>
+                                    </div>
+                                }
+                        </div>
+                    </div>
+
+                    <button type="submit" asp-page-handler="Submit" class="btn btn-success">@SharedResources.Save</button>
+                    <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToList</button>
+
+                    &nbsp;
+                    <button type="submit" asp-page-handler="Remove" asp-route-id="@Model.Input.Id" onclick="return confirm('@SharedResources.DeleteConfirm');" formnovalidate="formnovalidate" class="btn btn-danger">@SharedResources.Delete</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@*<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>@PoliciesManagementResources.Edit_FormTitle <small>@PoliciesManagementResources.Edit_FormDesc</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form id="demo-form2" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                            @PoliciesManagementResources.FormPolicyName<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <input type="hidden" asp-for="Input.Id" />
+                            <input type="hidden" asp-for="Input.Name" />
+                            <span>@Model.Input.Name</span>
+
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">@PoliciesManagementResources.FormRoles</label>
+
+                        <div class="col-md-6 col-sm-6 ">
+                            @foreach (var role in Model.RolesList)
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="Input.SelectedRoleIds"
+                                               value="@role.Id" class="flat" @((Model.Input.Roles != null && Model.Input.Roles.Any(a => a.Id == role.Id)) ? "checked='checked'" : "")> @role.Name
+                                        </label>
+                                    </div>
+                                }
+
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+                            <button type="submit" asp-page-handler="Submit" class="btn btn-success">@SharedResources.Save</button>
+                            <button type="submit" asp-page-handler="Cancel" formnovalidate="formnovalidate" class="btn btn-primary">@SharedResources.BackToList</button>
+
+                            &nbsp;
+                            <button type="submit" asp-page-handler="Remove" asp-route-id="@Model.Input.Id" onclick="return confirm('@SharedResources.DeleteConfirm');" formnovalidate="formnovalidate" class="btn btn-danger">@SharedResources.Delete</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+

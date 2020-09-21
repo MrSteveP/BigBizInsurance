@@ -1,0 +1,15 @@
+﻿@using CrossCutting.Core
+@{
+    var msgViewModel = TempData.Get<MessageViewModel>(CoreEnumerations.TempDataKeys.Message);
+    TempData[CoreEnumerations.TempDataKeys.Message] = null;
+}
+
+@if (msgViewModel != null && !String.IsNullOrEmpty(msgViewModel.Message))
+{
+    <div id="div_Message" class="alert alert-@(msgViewModel.Type.ToString()) alert-dismissible " role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        @msgViewModel.Message
+    </div>
+}

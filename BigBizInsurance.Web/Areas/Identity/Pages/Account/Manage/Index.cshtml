@@ -1,0 +1,44 @@
+﻿@page
+@using UsersResources = UserManagement.Localization.Users.UsersResources
+@using _Layout = BigBizInsurance.Web.Localization._Layout._Layout
+@using SharedResources = Common.Localization.Shared.Shared
+@model IndexModel
+@{
+    ViewData["Title"] = UsersResources.ChangePhone;
+    Layout = "_LayoutIdentity";
+}
+
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<h4 class="text-dark mb-5">@UsersResources.ChangePhone</h4>
+<form id="account" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="row">
+        <div class="form-group col-md-12 mb-4">
+
+            <input asp-for="Username" placeholder="@(UsersResources.UserName)" class="form-control input-lg" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+
+
+        </div>
+        <div class="form-group col-md-12 ">
+
+            <input asp-for="Input.PhoneNumber" placeholder="@(UsersResources.PhoneNumber)" class="form-control input-lg" />
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="col-md-12">
+          
+            <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">@SharedResources.Save </button>
+            <p>
+
+                <a class="text-blue" asp-page="/Index" asp-area="" >
+                    <span>@SharedResources.BackToHomePage</span>
+                </a>
+
+            </p>
+        </div>
+    </div>
+</form>

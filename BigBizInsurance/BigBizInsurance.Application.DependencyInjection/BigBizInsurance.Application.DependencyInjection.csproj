@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Application\Common.Application.csproj" />
+    <ProjectReference Include="..\BigBizInsurance.Application\BigBizInsurance.Application.csproj" />
+    <ProjectReference Include="..\BigBizInsurance.Domain\BigBizInsurance.Domain.csproj" />
+    <ProjectReference Include="..\BigBizInsurance.Persistance\BigBizInsurance.Persistance.csproj" />
+  </ItemGroup>
+
+</Project>

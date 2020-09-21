@@ -1,0 +1,12 @@
+﻿@page
+@using UsersResources = UserManagement.Localization.Users.UsersResources
+
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = UsersResources.UserAccessDeniedTitle;
+}
+
+<header>
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger">@UsersResources.UserAccessDeniedMsg</p>
+</header>

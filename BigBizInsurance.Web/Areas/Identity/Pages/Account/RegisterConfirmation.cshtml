@@ -1,0 +1,16 @@
+﻿@page
+@using UsersResources = UserManagement.Localization.Users.UsersResources
+
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = UsersResources.RegisterConfirmation;
+}
+
+    <form>
+        <h1>@ViewData["Title"]</h1>
+
+        <p>
+            @UsersResources.RegistrationSuccess
+        </p>
+    </form>
+
